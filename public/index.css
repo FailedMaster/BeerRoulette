@@ -1,0 +1,110 @@
+html {
+    text-align: center;
+    background-color: #313131;
+}
+
+body {
+    color: #cccccc;
+    font-family: sans-serif;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: #313131;
+}
+
+#categories ul {
+    cursor: pointer;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+    background-color: #404550
+}
+
+#categories ul li {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#categories ul li.selected {
+    background-color: #2035b4;
+    font-weight: bold;
+}
+
+#categories ul li a {
+    font-size: 0.8em;
+    flex: 1;
+}
+
+
+#rouletteButton {
+    cursor: pointer;
+    display: inline-block;
+    background-image: url('images/mysterybeer.png');
+    background-position: center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-color: #2035b4;
+    text-align: center;
+    border: 8px solid #404550;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateZ(1800deg);
+    }
+}
+
+.spinning {
+    animation: spin 2s ease-in-out;
+}
+
+#beerData {
+    position: relative;
+    top: 300px;
+    padding: 30px;
+    height: 100%;
+}
+
+#beerImage {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+ul#beerPriceList {
+    flex: 0 1 40px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul#beerPriceList li {
+    display: flex;
+    justify-content: right;
+}
+
+ul#beerPriceList li span {
+    text-align: right;
+    display: inline-block;
+    max-width: 200px;
+}
+
+ul#beerPriceList li span.beer-price {
+    width: 65px;
+}
