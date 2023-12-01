@@ -59,7 +59,7 @@ async function fetchBeers(connection) {
     if (os === 'windows') {
         browser = await puppeteer.launch({ headless: 'new' }); // WINDOWS
     } else if (os === 'linux') {
-       browser = await puppeteer.launch({ args: ['--no-sandbox'], headless: 'new', executablePath: '/usr/bin/chromium-browser' }); // LINUX
+       browser = await puppeteer.launch({ args: ['--no-sandbox'], headless: 'new' }); // LINUX
     }
 
     const page = await browser.newPage();
