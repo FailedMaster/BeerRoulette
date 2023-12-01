@@ -1,6 +1,0 @@
-{
-    "port": 3000,
-    "mysqluser": "nodesql",
-    "mysqlpw": "P4$$w0rD",
-    "mysqldb": "beerroulette"
-}
