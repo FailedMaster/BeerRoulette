@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const { mysqluser, mysqlpw, mysqldb } = require('../config.json');
+const { os, mysqluser, mysqlpw, mysqldb } = require('../config.json');
 const mysql = require('mysql');
 
 const args = process.argv.slice(2);
@@ -54,8 +54,13 @@ async function getRandomBeer(selectedCategories, connection) {
 
 async function fetchBeers(connection) {
     // REMEMBER TO ALWAYS SWITCH TO CORRECT OS!!!
-    const browser = await puppeteer.launch({ headless: 'new' }); // WINDOWS
-    //const browser = await puppeteer.launch({ args: ['--no-sandbox'], headless: 'new', executablePath: '/usr/bin/chromium-browser' }); // LINUX
+    let browser;
+
+    if (os === 'windows') {
+        browser = await puppeteer.launch({ headless: 'new' }); // WINDOWS
+    } else if (os === 'linux') {
+       browser = await puppeteer.launch({ args: ['--no-sandbox'], headless: 'new', executablePath: '/usr/bin/chromium-browser' }); // LINUX
+    }
 
     const page = await browser.newPage();
     const categories = ['Fassbiere', 'Flaschenbiere', 'Dosenbiere', 'Cider'];
