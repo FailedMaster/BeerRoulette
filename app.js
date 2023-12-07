@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mysql = require('mysql');
+const cron = require('node-cron');
 
 const beerRoulette = require('./api/beerRoulette.js');
 const { port, mysqluser, mysqldb, mysqlpw } = require('./config.json');
@@ -41,3 +42,12 @@ app.get('/getRandomBeer', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
+
+// Scheduled Pull
+cron.schedule('0 0 18 * * *', () => {
+	try {
+		beerRoulette.fetchBeers(connection);
+	} catch (error) {
+		console.log(error);
+	}
+})
