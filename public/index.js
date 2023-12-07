@@ -60,6 +60,7 @@ async function getRandomBeer() {
     const beerDescriptionElement = beerDataElement.querySelector('#beerDescription');
     const beerPriceListElement = beerDataElement.querySelector('#beerPriceList');
 
+    rouletteButtonElement.removeEventListener('click', getRandomBeer);
     rouletteButtonElement.classList.add('spinning');
 
     console.log('Call getRandomBeer');
@@ -71,6 +72,7 @@ async function getRandomBeer() {
     await new Promise(resolve => {
         setTimeout(() => {
             rouletteButtonElement.classList.remove('spinning');
+            initRouletteButton();
             resolve();
         }, 2000)
     });
