@@ -32,11 +32,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve index.html for all unmatched routes
 app.get('/', (req, res) => {
+    res.status(200);
     res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 app.get('/getRandomBeer', async (req, res) => {
     const response = await beerRoulette.getRandomBeer(req.query, connection);
+    res.status(200);
     res.send(response);
 });
 
