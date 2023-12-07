@@ -4,14 +4,14 @@ const mysql = require('mysql');
 const cron = require('node-cron');
 
 const beerRoulette = require('./api/beerRoulette.js');
-const { port, mysqluser, mysqldb, mysqlpw } = require('./config.json');
+const { port, mysqlConfig } = require('./config.json');
 
 // DB
 const connection = mysql.createConnection({
-    host: '127.0.0.1',
-    user: mysqluser,
-    password: mysqlpw,
-    database: mysqldb
+    host: mysqlConfig.host,
+    database: mysqlConfig.db,
+    user: mysqlConfig.user,
+    password: mysqlConfig.pw
 });
 
 connection.connect(async (err) => {

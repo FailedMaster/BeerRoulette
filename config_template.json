@@ -1,7 +1,11 @@
 {
     "os": "windows",
     "port": 3000,
-    "mysqluser": "",
-    "mysqlpw": "",
-    "mysqldb": ""
+    "mysqlConfig": {
+        "host": "localhost",
+        "socketPath": "",
+        "db": "",
+        "user": "",
+        "pw": ""
+    }
 }

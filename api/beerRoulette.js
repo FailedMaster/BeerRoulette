@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const { os, mysqluser, mysqlpw, mysqldb } = require('../config.json');
+const { os, mysqlConfig } = require('../config.json');
 const mysql = require('mysql');
 
 const args = process.argv.slice(2);
@@ -133,10 +133,10 @@ async function fetchBeers(connection) {
 
 if (args[0] === '-fetch') {
     const connection = mysql.createConnection({
-        host: '127.0.0.1',
-        user: mysqluser,
-        password: mysqlpw,
-        database: mysqldb
+        host: mysqlConfig.host,
+        database: mysqlConfig.db,
+        user: mysqlConfig.user,
+        password: mysqlConfig.pw
     });
 
     connection.connect(async (error) => {
