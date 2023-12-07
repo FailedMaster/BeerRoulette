@@ -134,6 +134,7 @@ async function fetchBeers(connection) {
 if (args[0] === '-fetch') {
     const connection = mysql.createConnection({
         host: mysqlConfig.host,
+        socketPath: mysqlConfig.socketPath,
         database: mysqlConfig.db,
         user: mysqlConfig.user,
         password: mysqlConfig.pw
